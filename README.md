@@ -1,131 +1,56 @@
-# 📦 Kargo-Takip
+cd /path/to/kargo-takip
+git init
+git add .
+git commit -m "İlk proje yüklemesi"
+git branch -M main
+git remote add origin https://github.com/kullaniciadi/kargo-takip.git
+git push -u origin main
+$conn = new mysqli("sqlXXX.infinityfree.com", "db_user", "db_password", "db_name");
+kargo-takip/
+│
+├── index.php          ← Kullanıcı paneli
+├── track.php          ← Kargo sorgu sonucu (opsiyonel)
+├── db.php             ← Veritabanı bağlantısı
+├── style.css          ← Tasarım dosyası
+│
+└── admin/
+    ├── login.php      ← Admin giriş
+    ├── dashboard.php  ← Admin ana panel
+    ├── add_shipment.php ← Yeni kargo ekleme
+    ├── logout.php     ← Çıkış
+    CREATE DATABASE kargo_db;
 
-Kargo Takip Sistemi - Kargo gönderimleri için gerçek zamanlı izleme ve yönetim platformu.
+USE kargo_db;
 
-## ✨ Özellikler
+CREATE TABLE admins (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    password VARCHAR(255)
+);
 
-- 📍 **Gerçek Zamanlı Takip** - Kargo konumunu anlık olarak takip edin
-- 🔔 **Bildirimler** - Kargo durumu değiştiğinde anında bilgilendirilmek
-- 📊 **Detaylı Raporlar** - Teslimat geçmişi ve istatistikler
-- 🗺️ **Harita Entegrasyonu** - Kargo rotalarını görsel olarak görmek
-- 👥 **Kullanıcı Yönetimi** - Gönderici ve alıcı hesapları
-- 🔐 **Güvenli API** - Güvenli veri iletişimi
+CREATE TABLE shipments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tracking_no VARCHAR(20),
+    customer_name VARCHAR(100),
+    status VARCHAR(100),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
 
-## 🚀 Hızlı Başlangıç
+CREATE TABLE shipment_logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    shipment_id INT,
+    location VARCHAR(100),
+    description TEXT,
+    log_date DATETIME DEFAULT CURRENT_TIMESTAMP
+);
 
-### Gereksinimler
-- Node.js 14+ veya Python 3.8+
-- Git
-
-### Kurulum
-
-```bash
-# Repository'yi klonlayın
-git clone https://github.com/Hasan543717/Kargo-Takip.git
-cd Kargo-Takip
-
-# Bağımlılıkları yükleyin
-npm install
-# veya
-pip install -r requirements.txt
-
-# Uygulamayı başlatın
-npm start
-# veya
-python app.py
-```
-
-## 📖 Kullanım
-
-### Basit Örnek
-
-```javascript
-// Kargo takip etme
-const cargo = new CargoTracker('CARGO123');
-cargo.track().then(location => {
-  console.log('Kargo Konumu:', location);
-});
-```
-
-## 📁 Proje Yapısı
-
-```
-Kargo-Takip/
-├── src/
-│   ├── api/           # API endpointleri
-│   ├── models/        # Veri modelleri
-│   └── utils/         # Yardımcı fonksiyonlar
-├── public/            # Statik dosyalar
-├── tests/             # Test dosyaları
-├── README.md          # Bu dosya
-├── package.json       # Bağımlılıklar
-└── .gitignore         # Git için yok sayılacak dosyalar
-```
-
-## 🛠️ Teknolojiler
-
-- **Backend:** Node.js / Express.js veya Python / Flask
-- **Frontend:** React / Vue.js
-- **Veritabanı:** MongoDB / PostgreSQL
-- **Harita:** Google Maps API / Leaflet
-- **Deployment:** Docker / Heroku
-
-## 📝 API Dokümantasyonu
-
-### Kargo Durumu Sorgula
-
-```
-GET /api/cargo/:trackingNumber
-```
-
-**Yanıt:**
-```json
-{
-  "trackingNumber": "CARGO123",
-  "status": "In Transit",
-  "location": "İstanbul",
-  "estimatedDelivery": "2026-02-25"
-}
-```
-
-## 🧪 Testler
-
-```bash
-# Tüm testleri çalıştırın
-npm test
-# veya
-pytest
-```
-
-## 🤝 Katkıda Bulunma
-
-Katkılarınız memnuniyetle karşılanır! 
-
-1. Repository'yi forklayın
-2. Feature branch'i oluşturun (``git checkout -b feature/AmazingFeature``)
-3. Değişiklikleri commit edin (``git commit -m 'Add AmazingFeature'``)
-4. Branch'i push edin (``git push origin feature/AmazingFeature``)
-5. Pull Request açın
-
-## 📋 Lisans
-
-Bu proje MIT Lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
-
-## 👤 Geliştirici
-
-**Hasan543717**
-- GitHub: [@Hasan543717](https://github.com/Hasan543717)
-
-## 📧 İletişim
-
-Sorularınız veya önerileriniz için:
-- 📝 Issue açın: [GitHub Issues](https://github.com/Hasan543717/Kargo-Takip/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/Hasan543717/Kargo-Takip/discussions)
-
-## 🐛 Hata Bildirme
-
-Bir hata bulduysanız, lütfen [Issues](https://github.com/Hasan543717/Kargo-Takip/issues) kısmında detaylı bir rapor açın.
-
----
-
-⭐ Projeyi beğendiyseniz yıldız vermeyi unutmayın!
+-- Demo admin
+INSERT INTO admins (username, password) 
+VALUES ('admin', '$2y$10$wH6W6QvV9n2yY8V9pV8u6eO9H7l8Y5sGJH8dKjH9fLkJH8dJH8dJH'); 
+-- Şifre: 123456
+git init
+git add .
+git commit -m "İlk yükleme"
+git branch -M main
+git remote add origin https://github.com/KULLANICIADI/kargo-takip.git
+git push -u origin main
